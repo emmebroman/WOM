@@ -1,0 +1,26 @@
+@apiUrl = http://localhost:3030/notes/
+
+###
+GET {{apiUrl}}
+
+
+###
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+"msg": "test"
+}
+
+###
+PATCH {{apiUrl}}/100
+Content-Type:  application/json
+
+{
+    "text": "My note"
+}
+
+###
+DELETE {{apiUrl}}/100
+
+###

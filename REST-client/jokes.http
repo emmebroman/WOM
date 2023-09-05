@@ -1,0 +1,63 @@
+
+#Programming jokes
+GET https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart
+
+
+### Puns
+
+GET https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart
+
+
+###
+
+
+#POST-exempel (Samma system för PUT/PATCH)
+
+POST https://url
+Content-Type: application/json
+
+{"hello": "world"}
+
+
+###Visa alla produkter
+
+GET https://fw-teaching.fi/demo/wdbocms/api/v1/products
+
+###Visa en produkt
+
+@apiUrl = https://fw-teaching.fi/demo/wdbocms/api/v1/products/
+GET {{apiUrl}}1001
+
+
+###Skapa e ny produkt
+
+POST https://fw-teaching.fi/demo/wdbocms/api/v1/products/
+Content-Type: application/json
+
+{
+"name": "test",
+"price": 10
+}
+
+###Ändra en produkt
+
+PUT {{apiUrl}}1004
+Content-Type: application/json
+
+{
+"name": "put",
+"price": 20
+}
+
+###Ändra pris med patch
+
+PATCH {{apiUrl}}1004
+Content-Type: application/json
+
+{
+    "price": 30
+}
+
+###
+
+DELETE {{apiUrl}}1004
