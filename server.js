@@ -14,6 +14,19 @@ app.get('/hello', (req, res) => {
     res.send('Hello-route')
 })
 
+app.get('/hello/:name', (req, res) => {
+    console.log(req.params) //route params
+    console.log(req.query) //För query stringen
+
+
+    res.send(`Hello, ${req.params.name}`)
+})
+
+app.get('/weekdays/:wd', (req, res) => {
+    const weekdays = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"]
+    res.send(weekdays[req.params.wd-1])
+})
+
 console.log("Hej Node")
 
 app.listen(PORT, () => {
