@@ -2,6 +2,13 @@ const express = require('express')
 const app = express()
 const PORT = 3030
 
+const myMiddleware = (req, res, next) => {
+    console.log("Hello middleware")
+    next()
+}
+
+app.use(myMiddleware)
+
 app.get('/', (req, res) => {
     console.log(`GET request to / from ${req.ip}`)
     res.send('Main page!')
