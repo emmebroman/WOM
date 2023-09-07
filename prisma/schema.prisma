@@ -9,4 +9,10 @@ datasource db {
 
 model notes {
   id String @id @default(auto()) @map("_id") @db.ObjectId
+  noteText String?
+}
+
+model test {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  noteText    String?
 }

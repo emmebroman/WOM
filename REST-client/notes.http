@@ -3,24 +3,28 @@
 ###
 GET {{apiUrl}}
 
+###
+
+GET {{apiUrl}}/64f9a91081d13b8791f52582
+
 
 ###
 POST {{apiUrl}}
 Content-Type: application/json
 
 {
-"msg": "test"
+"text": "Note2"
 }
 
 ###
-PATCH {{apiUrl}}/100
+PATCH {{apiUrl}}/64f9b40c9035b26bc4682229
 Content-Type:  application/json
 
 {
-    "text": "My note"
+    "text": "My updated note"
 }
 
 ###
-DELETE {{apiUrl}}/100
+DELETE {{apiUrl}}/64f9b40c9035b26bc4682229
 
 ###
