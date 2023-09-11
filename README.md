@@ -15,3 +15,8 @@ npm i prisma
 npx prisma init
 
 npx prisma db push - för att pusha till databasen
+
+ctrl D för exit
+
+Skapa middleware för JWTS
+npm i jsonwebtoken

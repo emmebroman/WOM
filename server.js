@@ -2,7 +2,12 @@
 
 const express = require('express')
 const app = express()
+const auth = require('./middleware/auth')
 const PORT = 3030
+
+//middleware-funktion
+
+app.use(auth)
 
 //För att kunna ta emot JSON i request-bodyn
 app.use(express.json())
@@ -21,7 +26,7 @@ const weekdayNames = (req, res, next) => {
 }
 
 //Middleware exekveras där den är satt i koden
-app.use(myMiddleware)
+//app.use(myMiddleware)
 
 app.get('/', (req, res) => {
     console.log(`GET request to / from ${req.ip}`)
