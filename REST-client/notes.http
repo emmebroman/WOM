@@ -1,12 +1,14 @@
-@apiUrl = http://localhost:3030/notes
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMyIsImVtYWlsIjoiYnJvbWFuZW1AYXJjYWRhLmZpIiwibmFtZSI6IkVtaWxpYSIsInVzZXJfbGV2ZWwiOiJhZG1pbiIsImlhdCI6MTUxNjIzOTAyMn0.5Ca032CVGvRsh0JZuL-MssaElq8lel4tdcv0mqnCJuw
+#@apiUrl = http://localhost:3030/notes
+@apiUrl = https://notes-emme.azurewebsites.net/notes
+@token = {{$dotenv TOKEN}}
 
 ###
 GET {{apiUrl}}
+Authorization: Bearer {{token}}
 
 ###
 
-GET {{apiUrl}}/64f9b343979d974f1f4a7fa2
+GET {{apiUrl}}/64ff00e6e1e01909c92b8174
 Authorization: Bearer {{token}}
 
 ###
