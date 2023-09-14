@@ -1,0 +1,45 @@
+@apiUrl = http://localhost:3030/users
+#@apiUrl = https://notes-emme.azurewebsites.net/users
+@token = {{$dotenv TOKEN}}
+
+###
+GET {{apiUrl}}
+Authorization: Bearer {{token}}
+
+###
+
+GET {{apiUrl}}/64ff00e6e1e01909c92b8174
+Authorization: Bearer {{token}}
+
+### Logga in på /users/login
+POST {{apiUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "emme2@gmail.com",
+    "password": "123456"
+}
+
+
+###
+POST {{apiUrl}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+"email": "emme2@gmail.com",
+"password": "123456"
+}
+
+###
+PATCH {{apiUrl}}/64feeaf737322583eaa8526b
+Content-Type:  application/json
+
+{
+    "text": "My updated note"
+}
+
+###
+DELETE {{apiUrl}}/64feeaf737322583eaa8526b
+
+###

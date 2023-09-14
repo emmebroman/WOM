@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,3 +19,37 @@ model test {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   noteText    String?
 }
+=======
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model notes {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  noteText String?
+  userId String?
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+}
+
+model test {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  noteText    String?
+}
+
+
+model users {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String   @unique
+  name    String?
+  password String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+>>>>>>> cf95d9ac500b83fd3b84536dc4f366a8acec0393
