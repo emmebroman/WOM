@@ -5,9 +5,7 @@ const app = express()
 const auth = require('./middleware/auth')
 const PORT = process.env.PORT || 3030
 
-//middleware-funktion
 
-app.use(auth)
 
 //För att kunna ta emot JSON i request-bodyn
 app.use(express.json())
@@ -34,10 +32,20 @@ app.get('/', (req, res) => {
 
 })
 
+//middleware-funktion
 
+const usersRouter = require('./routes/users.js')
+app.use('/users', usersRouter)
+
+//middleware-funktion, validerar jwt
+app.use(auth)
 
 const notesRouter = require('./routes/notes.js')
 app.use('/notes', notesRouter)
+
+
+
+
 
 app.get('/hello', (req, res) => {
     console.log("GET request to hello")
