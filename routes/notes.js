@@ -20,12 +20,22 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
 
+    try {
+
     const note = await prisma.notes.findUnique({
         where: {id: req.params.id}
     })
 
     console.log("notes GET ONE")
     res.send({ msg: 'notes', note: note })
+
+} catch (err){
+    console.log(err)
+    res.status(404).send({
+        msg: 'ERROR',
+        error: 'Note not found'
+})
+}
 })
 
 router.post('/', async (req, res) => {
@@ -42,20 +52,23 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
 
-    const updateNote = await prisma.notes.update({
+    const note = await prisma.notes.update({
         where: { 
             id: req.params.id,
         },
         data: { 
-            noteText: req.body.text
-         },
+            noteText: req.body.text,
+            updatedAt: new Date()
+                 },
       
       })
-      console.log("note updated:", updateNote)
+     
+
       res.send({ 
         msg: 'patch', 
         id: req.params.id,
-        reqBody: req.body})
+        note: note
+    })
     })
 
 
@@ -71,14 +84,15 @@ router.delete('/:id', async (req, res) => {
 
     res.send({ 
         msg: 'delete', 
-        id: req.params.id
+        id: req.params.id,
+        note: note
 
     })
 }catch (err) {
     console.log(err)
-    res.send({
+    res.status(400).send({
         msg: 'ERROR',
-        error: err
+        error: 'Bad request'
     })
 }
 })

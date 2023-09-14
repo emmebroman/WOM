@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/0ba64087-fea9-4be0-b010-4177e81a4655/resourceGroups/WOM/providers/Microsoft.Web/sites/notes-emme",
+    "appService.deploySubpath": "."
 }

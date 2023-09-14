@@ -20,3 +20,5 @@ ctrl D för exit
 
 Skapa middleware för JWTS
 npm i jsonwebtoken
+
+Status codes: https://restfulapi.net/http-status-codes/

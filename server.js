@@ -1,15 +1,17 @@
 //npm run dev
 
 const express = require('express')
+const cors = require('cors')
 const app = express()
-const auth = require('./middleware/auth')
+const authorizeToken = require('./middleware/auth')
 const PORT = process.env.PORT || 3030
 
-
+app.use(cors())
 
 //För att kunna ta emot JSON i request-bodyn
 app.use(express.json())
 
+/*
 // middleware-funktipn
 const myMiddleware = (req, res, next) => {
     console.log("Hello middleware")
@@ -22,7 +24,7 @@ const weekdayNames = (req, res, next) => {
     req.weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"]
     next()
 }
-
+*/
 //Middleware exekveras där den är satt i koden
 //app.use(myMiddleware)
 
@@ -34,21 +36,26 @@ app.get('/', (req, res) => {
 
 //middleware-funktion
 
-const usersRouter = require('./routes/users.js')
-app.use('/users', usersRouter)
 
 //Statiska sidor i public katalogen
 app.use('/public', express.static(__dirname + '/public'))
 
-//middleware-funktion, validerar jwt
-app.use(auth)
 
 const notesRouter = require('./routes/notes.js')
-app.use('/notes', notesRouter)
+app.use('/notes', authorizeToken, notesRouter)
+
+const usersRouter = require('./routes/users.js')
+app.use('/users', usersRouter)
+
+
+
+//middleware-funktion, validerar jwt
+//app.use(auth)
 
 
 
 
+/*
 
 app.get('/hello', (req, res) => {
     console.log("GET request to hello")
@@ -71,7 +78,7 @@ app.get('/weekdays/:wd', weekdayNames, (req, res) => {
 })
 
 console.log("Hej Node")
-
+*/
 app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}` )
 })

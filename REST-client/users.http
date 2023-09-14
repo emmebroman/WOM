@@ -1,5 +1,5 @@
-@apiUrl = http://localhost:3030/users
-#@apiUrl = https://notes-emme.azurewebsites.net/users
+#@apiUrl = http://localhost:3030/users
+@apiUrl = https://notes-emme.azurewebsites.net/users
 @token = {{$dotenv TOKEN}}
 
 ###
