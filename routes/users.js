@@ -6,10 +6,11 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 require('dotenv').config()
 
+/*
 // disable for production?
 router.get('/', async (req, res) => {
 
-    const users = await prisma.users.findMany()
+    const users = await prisma.users.findUnique()
     console.log("users GET")
     res.send({ 
         msg: 'users', 
@@ -28,7 +29,7 @@ router.get('/:id', async (req, res) => {
     console.log("users GET ONE")
     res.send({ msg: 'users', user: user })
 })
-
+*/
 router.post('/login', async (req, res) => {
     try {
         const user = await prisma.users.findUnique({
@@ -52,15 +53,18 @@ router.post('/login', async (req, res) => {
             expiresIn: '1d'
         }, process.env.JWT_SECRET)
 
-        res.send({token: token, msg: "Login successful", userId: user.id})
+        res.send({
+            token: token, 
+            msg: "Login successful", 
+            userId: user.id,
+            userEmail: user.email
+        })
 
     } catch (error) {
         
     }
 
 })
-
-
 
 router.post('/', async (req, res) => {
 
@@ -77,7 +81,7 @@ router.post('/', async (req, res) => {
     res.send({ msg: 'user created', id: user.id })
 })
 
-
+/*
 router.patch('/:id', async (req, res) => {
 
     if (req.params.id != req.authUser.sub) {
@@ -133,5 +137,5 @@ router.delete('/:id', async (req, res) => {
     })
 }
 })
-
+*/
 module.exports = router
