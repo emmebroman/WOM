@@ -52,9 +52,11 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
 
+    try{
+
     const note = await prisma.notes.update({
         where: { 
-            id: req.params.id,
+            id: parseInt(req.params.id),
         },
         data: { 
             noteText: req.body.text,
@@ -69,7 +71,9 @@ router.patch('/:id', async (req, res) => {
         id: req.params.id,
         note: note
     })
-    })
+    }catch{
+        console.log("error")
+    }})
 
 
 router.delete('/:id', async (req, res) => {

@@ -1,5 +1,5 @@
-#@apiUrl = http://localhost:3030/notes
-@apiUrl = https://notes-emme.azurewebsites.net/notes
+@apiUrl = http://localhost:3030/notes
+#@apiUrl = https://notes-emme.azurewebsites.net/notes
 @token = {{$dotenv TOKEN}}
 
 ###
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH {{apiUrl}}/64feffa2e1e01909c92b8173
+PATCH {{apiUrl}}/1
 Authorization: Bearer {{token}}
 Content-Type:  application/json
 
